@@ -1,6 +1,5 @@
--- create database DB_SMARTMAIL;
+create database DB_SMARTMAIL;
 
--- Tabela User
 CREATE TABLE User (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
@@ -10,14 +9,12 @@ CREATE TABLE User (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabela Folder
 CREATE TABLE Folder (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES User(id),
     name VARCHAR(50)
 );
 
--- Tabela Email
 CREATE TABLE Email (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES User(id),
@@ -28,7 +25,6 @@ CREATE TABLE Email (
     folder_id INT REFERENCES Folder(id)
 );
 
--- Tabela Event
 CREATE TABLE Event (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES User(id),
@@ -39,7 +35,6 @@ CREATE TABLE Event (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabela Task
 CREATE TABLE Task (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES User(id),
@@ -49,7 +44,6 @@ CREATE TABLE Task (
     status VARCHAR(20)
 );
 
--- Tabela Reminder
 CREATE TABLE Reminder (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES User(id),
